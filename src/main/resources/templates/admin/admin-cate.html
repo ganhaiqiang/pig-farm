@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
 <link rel="stylesheet" th:href="@{/css/font.css}">
+<link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
 <link rel="stylesheet" th:href="@{/css/xadmin.css}">
 <script th:src="@{/webjars/layui/layui.js}" charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/js/xadmin.js}"></script>
@@ -55,7 +56,7 @@
 									<td><input type="checkbox" name="" lay-skin="primary"></td>
 									<td>1</td>
 									<td>会员相关</td>
-									<td class="td-manage"><a title="编辑" onclick="xadmin.open('编辑','/admin-edit')" href="javascript:;"> <i class="layui-icon">&#xe642;</i>
+									<td class="td-manage"><a title="编辑" onclick="xadmin.open('编辑','/admin/admin-edit')" href="javascript:;"> <i class="layui-icon">&#xe642;</i>
 									</a> <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;"> <i class="layui-icon">&#xe640;</i>
 									</a></td>
 								</tr>

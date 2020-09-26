@@ -25,4 +25,9 @@ public class CommonController {
 	public String welcome1() {
 		return "welcome1";
 	}
+
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
 }
