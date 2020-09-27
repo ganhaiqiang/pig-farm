@@ -7,12 +7,12 @@ import java.util.stream.Stream;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
@@ -32,21 +32,21 @@ import io.swagger.annotations.Api;
  * @author GHQ
  * @since 2020-09-27
  */
-@RestController
-@RequestMapping("/disease/disease-news")
+@Controller
+@RequestMapping("/disease/news")
 @Api(tags = { "猪病新闻" })
 public class DiseaseNewsController {
 
 	@Autowired
 	private IDiseaseNewsService diseaseNewsService;
 
-	@GetMapping("/disease-news-list")
+	@GetMapping("/list")
 	@ResponseBody
 	public ModelAndView list() {
-		return new ModelAndView("disease/disease-news/disease-news-list");
+		return new ModelAndView("disease/news/news-list");
 	}
 
-	@GetMapping("/disease-news-page")
+	@GetMapping("/page")
 	@ResponseBody
 	public Response page(@RequestParam("page") Long current, @RequestParam("limit") Long pageSize) {
 		Page<DiseaseNews> page = new Page<DiseaseNews>(current, pageSize);
@@ -55,9 +55,9 @@ public class DiseaseNewsController {
 		return ApiResponse.ok(page);
 	}
 
-	@GetMapping("/disease-news-save")
+	@GetMapping("/save")
 	public ModelAndView edit(Integer id) {
-		ModelAndView modelAndView = new ModelAndView("disease/disease-news/disease-news-save");
+		ModelAndView modelAndView = new ModelAndView("disease/news/news-save");
 		if (id != null && id > 0) {
 			DiseaseNews diseaseNews = diseaseNewsService.getById(id);
 			return modelAndView.addObject("diseaseNews", diseaseNews);
@@ -65,12 +65,12 @@ public class DiseaseNewsController {
 		return modelAndView;
 	}
 
-	@GetMapping("/disease-news-view")
+	@GetMapping("/view")
 	public ModelAndView view() {
-		return new ModelAndView("disease/disease-news/disease-news-view");
+		return new ModelAndView("disease/news/news-view");
 	}
 
-	@PostMapping("/disease-news-del")
+	@PostMapping("/del")
 	@ResponseBody
 	public Response del(@NotBlank(message = "ids不能为空") String ids) {
 		List<Integer> idList = Stream.of(ids.split(",")).mapToInt(s -> Integer.parseInt(s)).boxed().collect(Collectors.toList());
@@ -78,10 +78,17 @@ public class DiseaseNewsController {
 		return ApiResponse.ok(flag);
 	}
 
-	@PostMapping("/disease-news-save")
+	@PostMapping("/save")
 	@ResponseBody
 	public Response diseaseSave(DiseaseNews diseaseNews) {
 		boolean flag = diseaseNewsService.saveOrUpdate(diseaseNews);
 		return ApiResponse.ok(flag);
+	}
+
+	@PostMapping("/get")
+	@ResponseBody
+	public Response findById(Integer id) {
+		DiseaseNews diseaseNews = diseaseNewsService.getById(id);
+		return ApiResponse.ok(diseaseNews);
 	}
 }
