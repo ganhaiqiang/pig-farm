@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.layadmin-text p {
+	margin-bottom: 10px;
+	text-indent: 2em
+}
+
+.layadmin-text p:last-child {
+	margin: 0
+}
+
+.layuiAdmin-msg-detail .layui-card-body {
+	padding: 15px
+}
+
+.layadmin-tips .layui-text {
+	width: 500px;
+	margin: 30px auto;
+	padding-top: 20px;
+	border-top: 5px solid #009688;
+	font-size: 16px
+}
+
+.layadmin-tips .layui-text .layui-anim {
+	display: inline-block
+}
+
+.layui-fluid {
+	padding: 15px
+}
+
+.layui-card .layui-tab-brief .layui-tab-title {
+	height: 42px;
+	border-bottom-color: #f6f6f6
+}
+
+.layui-card .layui-tab-brief .layui-tab-title li {
+	margin: 0 15px;
+	padding: 0;
+	line-height: 42px
+}
+
+.layui-card .layui-tab-brief .layui-tab-title li.layui-this {
+	color: #333
+}
+
+.layui-card .layui-tab-brief .layui-tab-title .layui-this:after {
+	height: 43px
+}
+
+.layui-card .layui-tab-brief .layui-tab-content {
+	padding: 15px
+}
+
+.layui-card .layui-table-view {
+	margin: 0
+}
+
+.layuiAdmin-msg-detail h1 {
+	font-size: 16px
+}
+
+.layuiAdmin-msg-detail .layui-card-header {
+	height: auto;
+	line-height: 30px;
+	padding: 15px
+}
+
+.layuiAdmin-msg-detail .layui-card-header span {
+	padding: 0 5px;
+	color: #999
+}
+
+.layuiAdmin-msg-detail .layui-card-header span:first-child {
+	padding-left: 0
+}
+
+.layuiAdmin-msg-detail .layui-card-body {
+	padding: 15px
+}

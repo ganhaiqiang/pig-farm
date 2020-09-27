@@ -66,8 +66,9 @@ public class DiseaseNewsController {
 	}
 
 	@GetMapping("/view")
-	public ModelAndView view() {
-		return new ModelAndView("disease/news/news-view");
+	public ModelAndView view(Integer id) {
+		DiseaseNews diseaseNews = diseaseNewsService.getById(id);
+		return new ModelAndView("disease/news/news-view").addObject("diseaseNews", diseaseNews);
 	}
 
 	@PostMapping("/del")

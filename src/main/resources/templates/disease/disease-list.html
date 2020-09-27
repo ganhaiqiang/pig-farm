@@ -25,7 +25,7 @@
 
 		table.render({
 			elem : '#test',
-			url : '/disease/disease-page',
+			url : '/disease/page',
 			toolbar : '#toolbarDemo', //开启头部工具栏，并为其绑定左侧模板
 			defaultToolbar : [ 'filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
 				title : '提示',
@@ -106,7 +106,7 @@
 				layer.confirm('确认要删除吗？' + ids, function(index) {
 					//批量删除
 					$.ajax({
-						url : "/disease/disease-del",
+						url : "/disease/del",
 						data : {
 							'ids' : ids.join(',')
 						},
@@ -125,7 +125,7 @@
 				});
 				break;
 			case 'add':
-				xadmin.open('添加', '/disease/disease-save', 600, 440)
+				xadmin.open('添加', '/disease/save', 600, 440)
 				break;
 
 			//自定义头工具栏右侧图标 - 提示
@@ -144,7 +144,7 @@
 				layer.confirm('真的删除行么', function(index) {
 					//发异步删除数据
 					$.ajax({
-						url : "/disease/disease-del",
+						url : "/disease/del",
 						data : {
 							'ids' : data.id
 						},
@@ -160,7 +160,7 @@
 					});
 				});
 			} else if (obj.event === 'edit') {
-				xadmin.open('添加', '/disease/disease-save?id=' + data.id, 600,
+				xadmin.open('添加', '/disease/save?id=' + data.id, 600,
 						440)
 			}
 		});

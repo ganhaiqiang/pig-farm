@@ -31,7 +31,7 @@ class PigFarmApplicationTests {
 				String href = element.select("a").attr("href");
 				String summary = element.select("span").text();
 				Document document = Jsoup.connect(href).ignoreContentType(true).get();
-				String content = document.select("div.content table").text();
+				String content = document.select("div.content").html();
 
 				DiseaseNews diseaseNews = new DiseaseNews();
 				diseaseNews.setContent(content);
