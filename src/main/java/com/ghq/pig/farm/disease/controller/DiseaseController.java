@@ -36,7 +36,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Controller
 @RequestMapping("/disease")
-@Api(tags = { "测试测试" })
+@Api(tags = { "治疗方案" })
 public class DiseaseController {
 
 	@Autowired
