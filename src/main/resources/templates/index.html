@@ -10,9 +10,10 @@
 <link rel="stylesheet" th:href="@{/webjars/layui/css/layui.css}">
 <link rel="stylesheet" th:href="@{/css/font.css}">
 <link rel="stylesheet" th:href="@{/css/xadmin.css}">
-<!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+<link rel="stylesheet" th:href="@{/css/notice.css}">
 <script th:src="@{/webjars/layui/layui.js}" charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/js/xadmin.js}"></script>
+<script type="text/javascript" th:src="@{/js/notice.js}"></script>
 <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
 <!--[if lt IE 9]>
           <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -228,5 +229,33 @@
 	<style id="theme_style"></style>
 	<!-- 右侧主体结束 -->
 	<!-- 中部结束 -->
+	<script>
+		layui.use([ 'form', 'layer', 'notice' ], function() {
+			$ = layui.jquery;
+			var form = layui.form, layer = layui.layer;
+			var notice = layui.notice; // 允许别名 toastr
+
+			// 初始化配置，同一样式只需要配置一次，非必须初始化，有默认配置
+			notice.options = {
+				closeButton : true,//显示关闭按钮
+				debug : false,//启用debug
+				positionClass : "toast-top-right",//弹出的位置,
+				showDuration : "300",//显示的时间
+				hideDuration : "1000",//消失的时间
+				timeOut : "2000",//停留的时间
+				extendedTimeOut : "1000",//控制时间
+				showEasing : "swing",//显示时的动画缓冲方式
+				hideEasing : "linear",//消失时的动画缓冲方式
+				iconClass : 'toast-info', // 自定义图标，有内置，如不需要则传空 支持layui内置图标/自定义iconfont类名
+				onclick : null, // 点击关闭回调
+			};
+
+// 			notice.warning("提示信息：连接已断开。。。");
+// 			notice.info("成功连接到网络");
+// 			notice.error("报错了，哈哈！");
+			notice.success("欢迎光临！");
+
+		});
+	</script>
 </body>
 </html>
