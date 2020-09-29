@@ -3,6 +3,7 @@ package com.ghq.pig.farm;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,6 +43,11 @@ class PigFarmApplicationTests {
 				diseaseNewsService.save(diseaseNews);
 			}
 		}
+	}
+
+	@Test
+	void creatSHA256() {
+		System.out.println(DigestUtils.sha256Hex("123456"));
 	}
 
 }
