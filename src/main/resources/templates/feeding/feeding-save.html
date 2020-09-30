@@ -34,8 +34,8 @@
 				<div class="layui-form-item">
 					<label for="job" class="layui-form-label"> <span class="x-red">*</span>工作内容
 					</label>
-					<div class="layui-input-inline">
-						<textarea th:utext="${feeding?.job}" id="job" name="job" required="" lay-verify="required" autocomplete="off" class="layui-input" style="width: 390px; height: 90px;"></textarea>
+					<div class="layui-input-inline" style="width: 390px;">
+						<textarea th:utext="${feeding?.job}" id="job" name="job" required="" lay-verify="required" autocomplete="off" style="display: none;"></textarea>
 					</div>
 				</div>
 				<div class="layui-form-item">
@@ -67,24 +67,31 @@
 		</div>
 	</div>
 	<script>
-		layui.use([ 'form', 'layer' ], function() {
+		layui.use([ 'form', 'layer', 'layedit' ], function() {
 			$ = layui.jquery;
 			var form = layui.form, layer = layui.layer;
-
-			//自定义验证规则
-			form.verify({
-				nikename : function(value) {
-					if (value.length < 5) {
-						return '昵称至少得5个字符啊';
-					}
-				},
-				pass : [ /(.+){6,12}$/, '密码必须6到12位' ],
-				repass : function(value) {
-					if ($('#L_pass').val() != $('#L_repass').val()) {
-						return '两次密码不一致';
-					}
-				}
-			});
+			var layedit = layui.layedit;
+			
+			 var index=layedit.build('job',{
+				 height: 180, //设置编辑器高度
+				 tool: [
+					  'strong' //加粗
+					  ,'italic' //斜体
+					  ,'underline' //下划线
+					  ,'del' //删除线
+					  
+					  ,'|' //分割线
+					  
+					  ,'left' //左对齐
+					  ,'center' //居中对齐
+					  ,'right' //右对齐
+					  ,'link' //超链接
+					  ,'unlink' //清除链接
+					  ,'face' //表情
+					  ,'image' //插入图片
+					  ,'help' //帮助
+					]
+			 }); //建立编辑器
 
 			//监听提交
 			form.on('submit(add)', function(formData) {
@@ -94,7 +101,7 @@
 						'id' : formData.field.id,
 						'name' : formData.field.name,
 						'stage' : formData.field.stage,
-						'job' : formData.field.job,
+						'job' : layedit.getContent(index),
 						'spacing' : formData.field.spacing,
 						'step' : formData.field.step,
 						'remark' : formData.field.remark

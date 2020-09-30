@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ghq.pig.farm.common.ApiResponse;
 import com.ghq.pig.farm.common.Response;
@@ -42,6 +42,12 @@ public class FeedingController {
 	@ResponseBody
 	public ModelAndView list() {
 		return new ModelAndView("feeding/feeding-list");
+	}
+
+	@GetMapping("/view")
+	public ModelAndView view(String name) {
+		List<Feeding> list = feedingService.list(Wrappers.lambdaQuery(Feeding.class).eq(Feeding::getName, name));
+		return new ModelAndView("feeding/feeding-view").addObject("list", list);
 	}
 
 	@GetMapping("page")
